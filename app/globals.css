@@ -1,0 +1,503 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Variables */
+:root {
+  --font-cairo: "Cairo", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+body {
+  direction: rtl; /* Default Arabic RTL Support */
+}
+
+/* Dynamic direction based on language */
+[dir="ltr"] {
+  direction: ltr;
+  font-family: var(--font-inter);
+}
+
+[dir="rtl"] {
+  direction: rtl;
+  font-family: var(--font-cairo);
+}
+
+/* Font family based on direction */
+/*[dir="rtl"] {
+  font-family: var(--font-cairo);
+}
+
+[dir="ltr"] {
+  font-family: var(--font-inter);
+}*/
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #3a3a3c;
+    --card: #ffffff;
+    --card-foreground: #3a3a3c;
+    --popover: #ffffff;
+    --popover-foreground: #3a3a3c;
+    --primary: #1996ce;
+    --primary-foreground: #ffffff;
+    --secondary: #3a3a3c;
+    --secondary-foreground: #ffffff;
+    --muted: #f8f9fa;
+    --muted-foreground: #6c757d;
+    --accent: #1996ce;
+    --accent-foreground: #ffffff;
+    --destructive: #dc3545;
+    --destructive-foreground: #ffffff;
+    --border: #dee2e6;
+    --input: #ffffff;
+    --ring: #1996ce;
+    --radius: 0.75rem;
+  }
+  .dark {
+    --background: #3a3a3c;
+    --foreground: #ffffff;
+    --card: #495057;
+    --card-foreground: #ffffff;
+    --popover: #495057;
+    --popover-foreground: #ffffff;
+    --primary: #1996ce;
+    --primary-foreground: #ffffff;
+    --secondary: #6c757d;
+    --secondary-foreground: #ffffff;
+    --muted: #495057;
+    --muted-foreground: #adb5bd;
+    --accent: #1996ce;
+    --accent-foreground: #ffffff;
+    --destructive: #dc3545;
+    --destructive-foreground: #ffffff;
+    --border: #6c757d;
+    --input: #495057;
+    --ring: #1996ce;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Enhanced Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+p {
+  line-height: 1.7;
+}
+
+/* Glass Morphism Effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(25, 150, 206, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(25, 150, 206, 0.6);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Enhanced Card Styles */
+.card-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom Gradient Backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #1996ce 0%, #2ba3d4 50%, #3a3a3c 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #3a3a3c 0%, #4a4a4e 50%, #1996ce 100%);
+}
+
+/* Enhanced Button Styles */
+.btn-primary {
+  background: linear-gradient(135deg, #1996ce 0%, #2ba3d4 100%);
+  border: none;
+  color: white;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #1580b8 0%, #1996ce 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(25, 150, 206, 0.4);
+}
+
+/* Map Animation Styles */
+.map-grid {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: map-scroll 20s linear infinite;
+}
+
+@keyframes map-scroll {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+/* Enhanced Form Styles */
+.form-input {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #dee2e6;
+  border-radius: 12px;
+}
+
+.form-input:focus {
+  border-color: #1996ce;
+  box-shadow: 0 0 0 4px rgba(25, 150, 206, 0.1);
+  transform: translateY(-1px);
+}
+
+/* Loading States */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+
+  .text-6xl {
+    font-size: 2.5rem;
+  }
+
+  .text-5xl {
+    font-size: 2rem;
+  }
+
+  .text-4xl {
+    font-size: 1.875rem;
+  }
+
+  /* Mobile Card Spacing */
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  /* Mobile Button Adjustments */
+  .btn-mobile {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  /* Mobile Navigation Improvements */
+  .mobile-nav {
+    padding: 1rem;
+  }
+
+  /* Mobile Typography */
+  p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  /* Mobile Spacing */
+  .section-mobile {
+    padding: 3rem 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .text-3xl {
+    font-size: 1.5rem;
+  }
+
+  .text-2xl {
+    font-size: 1.25rem;
+  }
+
+  .text-xl {
+    font-size: 1.125rem;
+  }
+
+  /* Extra small mobile adjustments */
+  .hero-mobile {
+    padding: 2rem 1rem;
+  }
+
+  .card-mobile {
+    padding: 1rem;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid currentColor;
+  }
+
+  .btn-primary {
+    border: 2px solid #1996ce;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  * {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1996ce;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1580b8;
+}
+
+/* Selection Styles */
+::selection {
+  background: #1996ce;
+  color: white;
+}
+
+::-moz-selection {
+  background: #1996ce;
+  color: white;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus Styles for Accessibility */
+button:focus,
+a:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #1996ce;
+  outline-offset: 2px;
+}
+
+/* Enhanced Shadow Effects */
+.shadow-3xl {
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile Touch Improvements */
+@media (hover: none) and (pointer: coarse) {
+  .card-hover:hover {
+    transform: none;
+  }
+
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Language-specific spacing adjustments */
+[dir="ltr"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(var(--tw-space-x) * var(--tw-space-x-reverse));
+  margin-left: calc(var(--tw-space-x) * calc(1 - var(--tw-space-x-reverse)));
+}
+
+[dir="rtl"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+  margin-right: calc(var(--tw-space-x) * var(--tw-space-x-reverse));
+  margin-left: calc(var(--tw-space-x) * calc(1 - var(--tw-space-x-reverse)));
+}
+
+/* تحسين عرض النصوص للغة الإنجليزية */
+[dir="ltr"] h1,
+[dir="ltr"] h2,
+[dir="ltr"] h3,
+[dir="ltr"] h4,
+[dir="ltr"] h5,
+[dir="ltr"] h6 {
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+[dir="ltr"] p {
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* تأثير تفاعلي لكلمة الكويت */
+.kuwait-gradient {
+  background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #92400e);
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease-in-out infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* تحسين الخطوط للغة الإنجليزية */
+[dir="ltr"] .font-black {
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+[dir="ltr"] .font-bold {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
