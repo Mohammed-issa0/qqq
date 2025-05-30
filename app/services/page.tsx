@@ -231,7 +231,7 @@ export default function ServicesPage() {
                 variants={fadeInUp}
                 className={`${index % 2 === 1 ? "md:flex-row-reverse" : ""} flex flex-col md:flex-row items-center gap-12`}
               >
-                <div className="md:w-1/2">
+                <div className=" w-full md:w-1/2">
                   <Card className="shadow-2xl border-0 overflow-hidden hover:shadow-3xl transition-all duration-500">
                     <CardHeader className={`bg-gradient-to-r ${service.color} text-white p-8`}>
                       <div className="flex items-center gap-4 mb-4">
@@ -272,7 +272,7 @@ export default function ServicesPage() {
                     </CardContent>
                   </Card>
                 </div>
-                <div className="md:w-1/2">
+                <div className="w-full md:w-1/2">
                   <div className="relative h-80 bg-gray-200 rounded-2xl overflow-hidden shadow-2xl">
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-20`}></div>
                     <div className="absolute inset-0 flex items-center justify-center">
