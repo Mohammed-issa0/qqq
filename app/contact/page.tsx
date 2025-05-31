@@ -10,7 +10,9 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, Phone, Mail, Globe, Clock, Send, MessageCircle, Users, CheckCircle } from "lucide-react"
 import ScrollToTop from "@/components/scroll-to-top"
 import { useLanguage } from "@/contexts/language-context"
-
+import dynamic from 'next/dynamic';
+import Map from "@/components/Map"
+const Map = dynamic(() => import('@/components/Map'), { ssr: false });
 const fadeInUp = {
   initial: { opacity: 0, y: 60 },
   animate: { opacity: 1, y: 0 },
@@ -355,7 +357,7 @@ export default function ContactPage() {
               {/* Map Placeholder */}
               <motion.div variants={fadeInUp}>
                 <Card className="shadow-2xl border-0 overflow-hidden">
-                  <CardHeader className="bg-gradient-to-r from-[#3A3A3C] to-[#4A4A4E] text-white p-8">
+                  <CardHeader className="bg-gradient-to-r from-[#3A3A3C] to-[#4A4A4E] text-white p-8 mb-[60px]">
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
                         <MapPin className="w-8 h-8" />
@@ -368,16 +370,7 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent className="p-0">
                     <div className="h-64 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                      <div className="text-center text-[#3A3A3C]">
-                        <motion.div
-                          animate={{ scale: [1, 1.1, 1] }}
-                          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-                        >
-                          <MapPin className="w-16 h-16 mx-auto mb-4 text-[#1996CE]" />
-                        </motion.div>
-                        <p className="text-lg font-bold">{t("contact.map_location")}</p>
-                        <p className="text-sm">{t("contact.kuwait")}</p>
-                      </div>
+                      <Map />
                     </div>
                   </CardContent>
                 </Card>

@@ -8,7 +8,9 @@ import Footer from "@/components/footer"
 import ScrollToTopOnRouteChange from "@/components/scroll-to-top-on-route-change"
 import { LanguageProvider } from "@/contexts/language-context"
 import Chatbot from "@/components/chatbot"
+import 'leaflet/dist/leaflet.css';
 
+import logo from "../public/images/logo.webp"
 const cairo = Cairo({
   subsets: ["arabic", "latin"],
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
@@ -24,10 +26,10 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  icons: "/images/logo.webp",
   title: "شركة خرائط الكويت للحلول المتكاملة الحاسوبية | Kuwait Maps Company",
   description:
     "شركة أعمال متخصصة في أنظمة الخرائط الإلكترونية باستخدام أنظمة قوقل السحابية وتكنولوجيا المعلومات المكانية المفتوحة | A business company specialized in electronic mapping systems using Google cloud systems and open spatial information technology",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({

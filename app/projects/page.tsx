@@ -175,7 +175,7 @@ const lang = dir === "rtl" ? "ar" : "en";
               <motion.div
                 key={project.id}
                 variants={fadeInUp}
-                className={`${index % 2 === 1 ? "md:flex-row-reverse" : ""} flex flex-col md:flex-row items-center gap-12`}
+                className={`${index % 2 === 1 ? "md:flex-row-reverse" : "flex-row-reverse"} flex flex-col md:flex-row items-center gap-12`}
               >
                 <div className="w-full md:w-1/2">
                   <ImageSlider

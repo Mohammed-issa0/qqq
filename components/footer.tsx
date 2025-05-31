@@ -95,7 +95,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 space-x-reverse">
                 <Phone className="w-5 h-5 text-[#1996CE]" />
-                <span className="text-gray-300">+965 555 912 92</span>
+                <span className="text-gray-300" dir="ltr">+965 5559 1292</span>
               </div>
               <div className="flex items-center space-x-3 space-x-reverse">
                 <Mail className="w-5 h-5 text-[#1996CE]" />
@@ -103,23 +103,24 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3 space-x-reverse">
                 <Globe className="w-5 h-5 text-[#1996CE]" />
-                <span className="text-gray-300">https://q8maps.com/</span>
+                <span className="text-gray-300">https://q8maps.com</span>
               </div>
             </div>
 
             {/* Social Media */}
             <div className="mt-6">
               <h4 className="text-lg font-semibold mb-3">{t("footer.follow_us")}</h4>
-              <div className="flex space-x-4 space-x-reverse">
+              <div className="flex space-x-4 space-x-reverse gap-3">
                 {[
-                  { icon: <Facebook className="w-5 h-5" />, href: "#" },
-                  { icon: <Twitter className="w-5 h-5" />, href: "#" },
-                  { icon: <Instagram className="w-5 h-5" />, href: "#" },
-                  { icon: <Linkedin className="w-5 h-5" />, href: "#" },
+                  { icon: <Facebook className="w-5 h-5" />, href: "https://www.facebook.com/Q8Maps" },
+                  { icon: <Twitter className="w-5 h-5" />, href: "https://x.com/q8maps/" },
+                  { icon: <Instagram className="w-5 h-5" />, href: "https://www.instagram.com/explore/locations/102848852820077/q8maps/recent/?next=%2Fp%2FCuni8J7tzDy%2F&ref=www.radfem.news&hl=bg" },
+                  { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/company/q8maps" },
                 ].map((social, index) => (
                   <motion.a
                     key={index}
                     href={social.href}
+                    target="_blank"
                     className="text-gray-300 hover:text-[#1996CE] transition-colors duration-300"
                     whileHover={{ scale: 1.2 }}
                     whileTap={{ scale: 0.9 }}

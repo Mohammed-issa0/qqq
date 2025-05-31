@@ -415,9 +415,9 @@ const Chatbot = () => {
 
   return (
     <>
-      {/* أيقونة الشات الثابتة */}
+      {/* أيقونة الشات الثابتة fixed bottom-8 left-8 z-50*/}
       <motion.div
-        className={`fixed bottom-4 z-50 ${dir === "rtl" ? "right-4" : "right-4"} sm:bottom-6 ${
+        className={`fixed bottom-8 z-50 ${dir === "rtl" ? "right-8" : "right-8"} sm:bottom-6 ${
           dir === "rtl" ? "sm:right-6" : "sm:left-6"
         }`}
         initial={{ scale: 0, opacity: 0 }}
